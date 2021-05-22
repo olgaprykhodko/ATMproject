@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6debdd0-278d-4716-8251-ecb31a453d12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/solvd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/solvd/ATMproject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solvd" beforeDir="false" afterPath="$PROJECT_DIR$/solvd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/solvd/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/solvd/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/solvd/financialprojectnew.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/solvd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/solvd/pom.xml" afterDir="false" />
@@ -67,7 +66,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="a9d97c495b556c72680261b0f2ea68b184fa61c3" />
+        <entry key="$PROJECT_DIR$" value="olgaATM" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/solvd" />
@@ -108,5 +107,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
