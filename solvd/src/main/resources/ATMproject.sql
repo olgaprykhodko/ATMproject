@@ -22,8 +22,6 @@ balance INT NOT NULL,
 status VARCHAR(16) NOT NULL,
 users_idUsers INT NOT NULL,
 banks_idBanks INT NOT NULL,
-banks_Cards_idCards INT NOT NULL,
-banks_ATM_idATM INT NOT NULL,
 FOREIGN KEY (users_idUsers) REFERENCES USERS(idUsers) ON DELETE CASCADE,
 FOREIGN KEY (banks_idBanks) REFERENCES BANKS(idBanks) ON DELETE CASCADE
 );
@@ -38,15 +36,15 @@ CREATE TABLE ATMs(
 idATM INT NOT NULL AUTO_INCREMENT,
 banknote VARCHAR(45) NOT NULL,
 commission INT NOT NULL,
+FOREIGN KEY (banknotes_idBanknotes) REFERENCES BANKNOTES(idBanknotes) ON DELETE CASCADE
 );
 INSERT INTO ATMs(banknote, commission) VALUES ('belRub',5),                                          
-                                              ('dollars',5),
+                                              ('dollar',5),
                                               ('UAH',5);
 CREATE TABLE banknotes(
 idBanknote INT NOT NULL AUTO_INCREMENT,
 denomination INT NOT NULL,
-number INT NOT NULL,
-FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
+number_of_banknotes INT NOT NULL
 );
 INSERT INTO banknotes(denomination,number) VALUES (10,13),
 												  (50,21),
@@ -60,14 +58,24 @@ INSERT INTO banknotes(denomination,number) VALUES (10,13),
 CREATE TABLE banks(
 idBanks INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(45) NOT NULL,
-country VARCHAR(45) NOT NULL,
+registerNumber VARCHAR(5) NOT NULL,
+FOREIGN KEY (Address_idAddress) REFERENCES Address(idAddress) ON DELETE CASCADE,
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
 );
-INSERT INTO banks (name,country) VALUES ('BelarusBank','Belarus'),
-										('PrivateBank','Ukraine'),
-                                        ('BTABank','Belarus'),
-                                        ('AlfaBank','Ukraine');
+INSERT INTO banks (name,registerNumber) VALUES ('BelarusBank','11111'),
+										       ('PrivateBank','22222'),
+                                               ('BTABank','33333'),
+                                               ('AlfaBank','44444');
                                           
+CREATE TABLE Address(
+idAddress INT NOT NULL AUTO_INCREMENT,
+street VARCHAR(45) NOT NULL,
+country VARCHAR(45) NOT NULL
+);
+INSERT INTO address (street,country) VALUES ('Mira','Ukraine'),
+											('Proletarskaya','Belarus'),
+                                            ('Pryluzhna','Ukraine'),
+                                            ('Komsomolska','Belarus');
                                           
                                           
                                           
