@@ -41,6 +41,18 @@ FOREIGN KEY (banknotes_idBanknotes) REFERENCES BANKNOTES(idBanknotes) ON DELETE 
 INSERT INTO ATMs(banknote, commission) VALUES ('belRub',5),                                          
                                               ('dollar',5),
                                               ('UAH',5);
+CREATE TABLE cash_collection(
+idCash_Collection INT NOT NULL AUTO_INCREMENT,
+schedule DATETIME NOT NULL,
+status VARCHAR(45) NOT NULL,
+FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs) ON DELETE CASCADE
+);
+INSERT INTO cash_collection(schedule ,status) VALUES (2021-05-25, 'on cash collection'),
+													 (2021-06-01,'not on cash collection'),
+                                                     (2021-06-02,'on cash collection'),
+                                                     (2021-06-03,'not on cash collection'),
+                                                     (2021-06-04,'on cash collection'),
+                                                     (2021-06-05,'not on cash collection');
 CREATE TABLE banknotes(
 idBanknote INT NOT NULL AUTO_INCREMENT,
 denomination INT NOT NULL,
@@ -70,13 +82,24 @@ INSERT INTO banks (name,registerNumber) VALUES ('BelarusBank','11111'),
 CREATE TABLE Address(
 idAddress INT NOT NULL AUTO_INCREMENT,
 street VARCHAR(45) NOT NULL,
-country VARCHAR(45) NOT NULL
+country VARCHAR(45) NOT NULL,
+FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
 );
 INSERT INTO address (street,country) VALUES ('Mira','Ukraine'),
 											('Proletarskaya','Belarus'),
-                                            ('Pryluzhna','Ukraine'),
-                                            ('Komsomolska','Belarus');
-                                          
+                                            ('Pryluzhna','Ukraine');
+CREATE TABLE Operations(
+idOperations INT NOT NULL AUTO_INCREMENT,
+operationName VARCHAR(45) NOT NULL,
+operationCode INT NOT NULL,
+FOREIGN KEY(ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
+);
+INSERT INTO Operations() VALUES ('payment of the penalty',01),
+								('payment of utility services',02),
+                                ('mobile phone replenishment',03),
+                                ('cash withdrawal',04),
+                                ('money exchange',05),
+                                ('money input',06);
                                           
                                           
                                           
