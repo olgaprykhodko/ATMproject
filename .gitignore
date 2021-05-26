@@ -1,3 +1,4 @@
 .idea
-target
-project.iml
+.DS_store
+ATMproject.iml
+.target
