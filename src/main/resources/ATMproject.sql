@@ -1,4 +1,4 @@
-CREATE DATABASE ATMProject;
+
 USE ATMProject;
 CREATE TABLE users(
 idUsers INT NOT NULL AUTO_INCREMENT,
@@ -9,56 +9,72 @@ PIN VARCHAR(4) NOT NULL,
 phoneNumber VARCHAR(45) NOT NULL,
 PRIMARY KEY (idUsers)
 );
-INSERT INTO users(idUsers, name, cardNumber, PIN, phoneNumber) VALUES ('Ivan','Ivanov','1234123412341234','1234','0951234123'),
+INSERT INTO users(name,surname, cardNumber, PIN, phoneNumber) VALUES ('Ivan','Ivanov','1234123412341234','1234','0951234123'),
 																	  ('Petr','Petrov','5678567856785678','5678','0955678567'),	
 																	  ('Stepan','Stepanov','1234432112344321','4321','0951234432'),
                                                                       ('Alina','Alinova','1222111133334445','5673','0661237911'),
                                                                       ('Katya','Katina','7777777777777777','7777','0506663337');
-																
 
 CREATE TABLE cards(
 idCards INT NOT NULL AUTO_INCREMENT,
 balance INT NOT NULL,
 status VARCHAR(16) NOT NULL,
-users_idUsers INT NOT NULL,
-banks_idBanks INT NOT NULL,
-FOREIGN KEY (users_idUsers) REFERENCES USERS(idUsers) ON DELETE CASCADE,
-FOREIGN KEY (banks_idBanks) REFERENCES BANKS(idBanks) ON DELETE CASCADE
+Users_idUsers INT NOT NULL,
+PRIMARY KEY (idCards),
+FOREIGN KEY (Users_idUsers) REFERENCES Users (idUsers) ON DELETE CASCADE
 );
-INSERT INTO cards (balance,status) VALUES (800,'active'),
-										  (500,'blocked'),
-                                          (1000,'active'),
-                                          (950,'active'),
-                                          (718,'active'),
-                                          (120,'blocked');                                          																								
-                                          
+INSERT INTO cards (balance,status,users_idUsers) VALUES (800,'active',1),
+																		(500,'blocked',1),
+																		(1000,'active',2),
+																		(950,'active',4),
+																		(718,'active',5),
+																		(120,'blocked',3); 
+
 CREATE TABLE ATMs(
-idATM INT NOT NULL AUTO_INCREMENT,
+idATMs INT NOT NULL AUTO_INCREMENT,
 banknote VARCHAR(45) NOT NULL,
 commission INT NOT NULL,
-FOREIGN KEY (banknotes_idBanknotes) REFERENCES BANKNOTES(idBanknotes) ON DELETE CASCADE
+Cards_idCards  INT NOT NULL,
+PRIMARY KEY (idATMs),
+FOREIGN KEY (Cards_idCards) REFERENCES Cards(idCards) ON DELETE CASCADE
 );
-INSERT INTO ATMs(banknote, commission) VALUES ('belRub',5),                                          
-                                              ('dollar',5),
-                                              ('UAH',5);
+INSERT INTO ATMs(banknote, commission,Cards_idCards) VALUES ('belRub',5,1),                                          
+                                                           ('dollar',5,2),
+                                                              ('UAH',5,3);																
+
+CREATE TABLE banks(
+idBanks INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(45) NOT NULL,
+registerNumber VARCHAR(5) NOT NULL,
+ATMs_idATMs INT NOT NULL,
+PRIMARY KEY(idBanks),
+FOREIGN KEY(ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
+);
+INSERT INTO banks (name,registerNumber,ATMs_idATMs) VALUES ('BelarusBank','11111',1),
+										                   ('PrivateBank','22222',2),
+                                                           ('BTABank','33333',3);
+              																																																														
 CREATE TABLE cash_collection(
 idCash_Collection INT NOT NULL AUTO_INCREMENT,
 schedule DATETIME NOT NULL,
 status VARCHAR(45) NOT NULL,
+ATMs_idATMs INT NOT NULL,
+PRIMARY KEY(idCash_Collection),
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs) ON DELETE CASCADE
 );
-INSERT INTO cash_collection(schedule ,status) VALUES (2021-05-25, 'on cash collection'),
-													 (2021-06-01,'not on cash collection'),
-                                                     (2021-06-02,'on cash collection'),
-                                                     (2021-06-03,'not on cash collection'),
-                                                     (2021-06-04,'on cash collection'),
-                                                     (2021-06-05,'not on cash collection');
+INSERT INTO cash_collection(schedule ,status,ATMs_idATMs) VALUES ('2021-05-25', 'on cash collection',1),
+													 ('2021-06-01','not on cash collection',1),
+                                                     ('2021-06-02','on cash collection',2),
+                                                     ('2021-06-03','not on cash collection',2),
+                                                     ('2021-06-04','on cash collection',3),
+                                                     ('2021-06-05','not on cash collection',3);
 CREATE TABLE banknotes(
-idBanknote INT NOT NULL AUTO_INCREMENT,
+idBanknotes INT NOT NULL AUTO_INCREMENT,
 denomination INT NOT NULL,
-number_of_banknotes INT NOT NULL
+number_of_banknotes INT NOT NULL,
+PRIMARY KEY(idBanknotes)
 );
-INSERT INTO banknotes(denomination,number) VALUES (10,13),
+INSERT INTO banknotes(denomination,Number_of_banknotes) VALUES (10,13),
 												  (50,21),
                                                   (100,19),
                                                   (500,7),
@@ -67,40 +83,69 @@ INSERT INTO banknotes(denomination,number) VALUES (10,13),
                                                   (100,34),
                                                   (10,10),
                                                   (20,2);
-CREATE TABLE banks(
-idBanks INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(45) NOT NULL,
-registerNumber VARCHAR(5) NOT NULL,
-FOREIGN KEY (Address_idAddress) REFERENCES Address(idAddress) ON DELETE CASCADE,
-FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
-);
-INSERT INTO banks (name,registerNumber) VALUES ('BelarusBank','11111'),
-										       ('PrivateBank','22222'),
-                                               ('BTABank','33333'),
-                                               ('AlfaBank','44444');
-                                          
+ 
+ CREATE TABLE ATMs_has_Banknotes(
+ ATMs_idATMs INT NOT NULL,
+ Banknotes_idBanknotes INT NOT NULL,
+ FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs),
+ FOREIGN KEY (Banknotes_idBanknotes) REFERENCES Banknotes(idBanknotes)
+ );
+ INSERT INTO ATMs_has_Banknotes (ATMs_idATMs,Banknotes_idBanknotes) VALUES (1,1),
+																			(1,2),
+                                                                            (1,3),
+                                                                            (1,4),
+                                                                            (1,5),
+                                                                            (1,6),
+                                                                            (2,1),
+																		    (2,2),
+                                                                            (2,3),
+                                                                            (2,4),
+                                                                            (3,1),
+                                                                            (3,2),
+                                                                            (3,4);																														
 CREATE TABLE Address(
 idAddress INT NOT NULL AUTO_INCREMENT,
 street VARCHAR(45) NOT NULL,
 country VARCHAR(45) NOT NULL,
+ATMs_idATMs INT NOT NULL,
+PRIMARY KEY(idAddress),
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
 );
-INSERT INTO address (street,country) VALUES ('Mira','Ukraine'),
-											('Proletarskaya','Belarus'),
-                                            ('Pryluzhna','Ukraine');
+INSERT INTO address (street,country,ATMs_idATMs) VALUES ('Mira','Ukraine',1),
+											('Proletarskaya','Belarus',2),
+                                            ('Pryluzhna','Ukraine',3);
 CREATE TABLE Operations(
 idOperations INT NOT NULL AUTO_INCREMENT,
 operationName VARCHAR(45) NOT NULL,
 operationCode INT NOT NULL,
-FOREIGN KEY(ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
+PRIMARY KEY (idOperations)
 );
-INSERT INTO Operations() VALUES ('payment of the penalty',01),
+INSERT INTO Operations(operationName,operationCode) VALUES ('payment of the penalty',01),
 								('payment of utility services',02),
                                 ('mobile phone replenishment',03),
                                 ('cash withdrawal',04),
                                 ('money exchange',05),
                                 ('money input',06);
-                                          
+
+ CREATE TABLE ATMs_has_Operations(
+ ATMs_idATMs INT NOT NULL,
+ Operations_idOperations INT NOT NULL,
+ FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs),
+ FOREIGN KEY (Operations_idOperations) REFERENCES Operations(idOperations)
+ );
+ INSERT INTO ATMs_has_Operations (ATMs_idATMs,Operations_idOperations) VALUES (1,1),
+																			  (1,2),
+                                                                              (1,3),
+                                                                              (1,4),
+                                                                              (1,5),
+                                                                              (2,1),
+                                                                              (2,2),
+                                                                              (2,3),
+                                                                              (2,4),
+                                                                              (3,1),
+                                                                              (3,2),
+                                                                              (3,3),
+                                                                              (3,4);
                                           
                                           
                                           
