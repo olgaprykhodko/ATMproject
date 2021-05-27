@@ -1,11 +1,11 @@
-package com.solvd.financialproject.dao.interfaces;
+package com.solvd.ATMproject.dao.interfaces;
 
 public interface IEntityDAO<T> {
-    void save(T entity);
+    void create();
 
-    void update(T entity);
+    void update();
+
+    T getById(int id);
 
     void delete(T entity);
-
-    void getById(T entity);
 }
