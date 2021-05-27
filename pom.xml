@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.solvd</groupId>
-    <artifactId>project</artifactId>
+    <artifactId>ATMproject</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>Demo</name>
-    <url>http://com.solvd.project</url>
+    <url>http://com.solvd.ATMproject</url>
 
     <dependencies>
         <dependency>
@@ -68,7 +68,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-
                 <configuration>
                     <source>11</source>
                     <target>11</target>
