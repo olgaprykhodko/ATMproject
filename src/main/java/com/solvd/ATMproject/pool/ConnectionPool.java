@@ -1,12 +1,13 @@
-package java.com.solvd.ATMproject.dao.pool;
+package com.solvd.ATMproject.pool;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 public class ConnectionPool {
     private final static Logger LOGGER = LogManager.getLogger(ConnectionPool.class);

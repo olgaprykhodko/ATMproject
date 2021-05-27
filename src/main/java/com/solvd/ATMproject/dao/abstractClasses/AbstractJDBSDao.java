@@ -1,7 +1,6 @@
-package java.com.solvd.ATMproject.dao.abstractClasses;
+package com.solvd.ATMproject.dao.abstractClasses;
 
-
-import java.com.solvd.ATMproject.dao.pool.ConnectionPool;
+import com.solvd.ATMproject.pool.ConnectionPool;
 
 public class AbstractJDBSDao {
     private ConnectionPool connectionPool = ConnectionPool.newInstance();

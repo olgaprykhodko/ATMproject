@@ -1,5 +1,4 @@
-package java.com.solvd.ATMproject.dao.models;
-
+package com.solvd.ATMproject.models;
 
 import lombok.Data;
 
