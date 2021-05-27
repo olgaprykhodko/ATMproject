@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.solvd</groupId>
-    <artifactId>project</artifactId>
+    <artifactId>ATMproject</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>Demo</name>
-    <url>http://com.solvd.project</url>
+    <url>http://com.solvd.ATMproject</url>
 
     <dependencies>
         <dependency>
