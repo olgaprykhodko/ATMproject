@@ -6,7 +6,6 @@ import lombok.Data;
 public class Card {
     int idCard;
     int balance;
-    boolean status;
+    String status;
     User isUser;
-    Bank idBank;
 }

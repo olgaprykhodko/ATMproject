@@ -7,6 +7,5 @@ public class Bank {
     int idBank;
     String name;
     int registerNumber;
-    Address idAddress;
     ATM idATM;
 }

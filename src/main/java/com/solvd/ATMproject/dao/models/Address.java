@@ -8,4 +8,6 @@ public class Address {
     String country;
     String city;
     String street;
+    ATM idATM;
+    Bank idBank;
 }

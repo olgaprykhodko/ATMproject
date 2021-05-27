@@ -8,5 +8,7 @@ public class ATM {
     double numberAtm;
     String banknote;
     int commission;
-    Banknote IdBanknote;
+    Card idCard;
+    Bank idBank;
+    CashCollection idCashCollection;
 }
