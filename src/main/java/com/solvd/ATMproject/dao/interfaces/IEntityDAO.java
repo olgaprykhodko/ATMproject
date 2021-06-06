@@ -5,8 +5,6 @@ public interface IEntityDAO<T, P> {
 
     void update(T entity);
 
-    void add(T entity);
-
     T getById(int id);
 
     void delete(T entity);
