@@ -9,5 +9,4 @@ public class User {
     String lastName;
     int cardNumber;
     int PIN;
-    int phoneNumber;
 }

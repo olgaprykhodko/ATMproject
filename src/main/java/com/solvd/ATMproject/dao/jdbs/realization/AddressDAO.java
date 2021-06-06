@@ -71,34 +71,6 @@ public class AddressDAO extends AbstractJDBSDao implements IAddressDAO {
     }
 
     @Override
-    public void add(Address entity) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        try {
-            ps = con.prepareStatement(INSERT_ADDRESS);
-            log.debug("Determine the values of the parameters");
-            ps.setString(1, entity.getCountry());
-            ps.setString(2, entity.getCity());
-            ps.setString(3, entity.getStreet());
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            log.error("Execute error", e);
-        } finally {
-            getConnectionPool().returnConnection(con);
-            log.debug("Connection returned to the pool");
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                log.debug("result and statement are closed");
-            } catch (SQLException e) {
-                log.error("Closing error", e);
-            }
-        }
-    }
-
-    @Override
     public Address read(String street) {
         Connection con = getConnectionPool().takeConnection();
         PreparedStatement ps = null;
