@@ -60,7 +60,11 @@ ATMs_idATMs INT NOT NULL,
 PRIMARY KEY(idCash_Collection),
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs) ON DELETE CASCADE
 );
+<<<<<<< HEAD
 INSERT INTO cash_collection(schedule,ATMs_idATMs) VALUES ('2021-05-25',1),
+=======
+INSERT INTO cash_collection(schedule ,ATMs_idATMs) VALUES ('2021-05-25',1),
+>>>>>>> 915ca7cd0734faf34118fb487e885497786f5bb9
 													 ('2021-06-01',1),
                                                      ('2021-06-02',2),
                                                      ('2021-06-03',2),
