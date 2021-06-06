@@ -7,5 +7,5 @@ public class Card {
     int idCard;
     int balance;
     String status;
-    User isUser;
+    int idUser;
 }

@@ -1,11 +1,11 @@
 package com.solvd.ATMproject.dao.interfaces;
 
 public interface IEntityDAO<T> {
-    void create();
+    void create(T entity);
 
-    void update();
+    void update(T entity);
 
-    T getById(int id);
+    T getById(long id);
 
     void delete(T entity);
 }

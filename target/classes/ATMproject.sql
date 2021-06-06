@@ -4,30 +4,31 @@ CREATE TABLE users(
 idUsers INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(15) NOT NULL,
 surname VARCHAR(25) NOT NULL,
+cardNumber VARCHAR(16) NOT NULL,
+PIN VARCHAR(4) NOT NULL,
 phoneNumber VARCHAR(45) NOT NULL,
 PRIMARY KEY (idUsers)
 );
-INSERT INTO users(name,surname, phoneNumber) VALUES ('Ivan','Ivanov','0951234123'),
-																	  ('Petr','Petrov','0955678567'),	
-																	  ('Stepan','Stepanov','0951234432'),
-                                                                      ('Alina','Alinova','0661237911'),
-                                                                      ('Katya','Katina','0506663337');
+INSERT INTO users(name,surname, cardNumber, PIN, phoneNumber) VALUES ('Ivan','Ivanov','1234123412341234','1234','0951234123'),
+																	  ('Petr','Petrov','5678567856785678','5678','0955678567'),	
+																	  ('Stepan','Stepanov','1234432112344321','4321','0951234432'),
+                                                                      ('Alina','Alinova','1222111133334445','5673','0661237911'),
+                                                                      ('Katya','Katina','7777777777777777','7777','0506663337');
 
 CREATE TABLE cards(
 idCards INT NOT NULL AUTO_INCREMENT,
 balance INT NOT NULL,
 status VARCHAR(16) NOT NULL,
-cardNumber VARCHAR(16) NOT NULL,
-PIN VARCHAR(4) NOT NULL,
 Users_idUsers INT NOT NULL,
 PRIMARY KEY (idCards),
 FOREIGN KEY (Users_idUsers) REFERENCES Users (idUsers) ON DELETE CASCADE
 );
-INSERT INTO cards (balance,status,cardNumber, PIN,users_idUsers) VALUES (800,'active','1234123412341234','1234',1),
-																		(500,'blocked','5678567856785678','5678',1),
-																		(1000,'active','1234432112344321','4321',2),
-																		(950,'active','1222111133334445','5673',4),
-																		(718,'active','7777777777777777','7777',5); 
+INSERT INTO cards (balance,status,users_idUsers) VALUES (800,'active',1),
+																		(500,'blocked',1),
+																		(1000,'active',2),
+																		(950,'active',4),
+																		(718,'active',5),
+																		(120,'blocked',3); 
 
 CREATE TABLE ATMs(
 idATMs INT NOT NULL AUTO_INCREMENT,
@@ -56,16 +57,17 @@ INSERT INTO banks (name,registerNumber,ATMs_idATMs) VALUES ('BelarusBank','11111
 CREATE TABLE cash_collection(
 idCash_Collection INT NOT NULL AUTO_INCREMENT,
 schedule DATETIME NOT NULL,
+status VARCHAR(45) NOT NULL,
 ATMs_idATMs INT NOT NULL,
 PRIMARY KEY(idCash_Collection),
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs) ON DELETE CASCADE
 );
-INSERT INTO cash_collection(schedule,ATMs_idATMs) VALUES ('2021-05-25',1),
-													 ('2021-06-01',1),
-                                                     ('2021-06-02',2),
-                                                     ('2021-06-03',2),
-                                                     ('2021-06-04',3),
-                                                     ('2021-06-05',3);
+INSERT INTO cash_collection(schedule ,status,ATMs_idATMs) VALUES ('2021-05-25', 'on cash collection',1),
+													 ('2021-06-01','not on cash collection',1),
+                                                     ('2021-06-02','on cash collection',2),
+                                                     ('2021-06-03','not on cash collection',2),
+                                                     ('2021-06-04','on cash collection',3),
+                                                     ('2021-06-05','not on cash collection',3);
 CREATE TABLE banknotes(
 idBanknotes INT NOT NULL AUTO_INCREMENT,
 denomination INT NOT NULL,
