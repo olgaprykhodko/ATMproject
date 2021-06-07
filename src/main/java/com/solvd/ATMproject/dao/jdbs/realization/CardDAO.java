@@ -1,11 +1,10 @@
-package com.solvd.ATMproject.dao.realization;
+package com.solvd.ATMproject.dao.jdbs.realization;
 
 import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
 import com.solvd.ATMproject.dao.interfaces.ICardDAO;
 import com.solvd.ATMproject.models.Card;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +15,7 @@ public class CardDAO extends AbstractJDBSDao implements ICardDAO {
     private String GET_BY_ID_CARD = "SELECT status FROM cards WHERE UsersIdUsers = ?";
 
     @Override
-    public Card getById(int idUsers) {
+    public Card read(String cardNumber) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -24,13 +23,12 @@ public class CardDAO extends AbstractJDBSDao implements ICardDAO {
         try {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_BY_ID_CARD);
-            preparedStatement.setInt(1, idUsers);
+            preparedStatement.setString(1, cardNumber);
             resultSet = preparedStatement.executeQuery();
             LOGGER.debug("Request was successful.");
             if (resultSet.next()) {
                 card = new Card();
-                card.setBalance(resultSet.getInt("balance"));
-                card.setStatus(resultSet.getString("status"));
+                card.setStatus(resultSet.getString("cardNumber"));
             }
         } catch (SQLException ex) {
             LOGGER.error("Error:" + ex);
@@ -47,22 +45,28 @@ public class CardDAO extends AbstractJDBSDao implements ICardDAO {
     }
 
     @Override
+    public Card getById(int id) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public void create(Card entity) {
+
         throw new UnsupportedOperationException();
     }
 
     @Override
     public void update(Card entity) {
+
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    public Card getById(long id) {
-        throw new UnsupportedOperationException();
-    }
 
     @Override
     public void delete(Card entity) {
+
         throw new UnsupportedOperationException();
     }
+
+
 }

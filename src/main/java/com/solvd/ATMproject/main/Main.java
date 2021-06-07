@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         
-        CardService.getStatusCardByNumberCard(1234123412341234L);
+       CardService cardService=new CardService();
+       CardService.getStatusCardByNumberCard("1234123412341234");
 
     }
 }

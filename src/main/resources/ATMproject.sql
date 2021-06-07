@@ -19,11 +19,11 @@ balance INT NOT NULL,
 status VARCHAR(16) NOT NULL,
 cardNumber VARCHAR(16) NOT NULL,
 PIN VARCHAR(4) NOT NULL,
-Users_idUsers INT NOT NULL,
+UsersIdUsers INT NOT NULL,
 PRIMARY KEY (idCards),
-FOREIGN KEY (Users_idUsers) REFERENCES Users (idUsers) ON DELETE CASCADE
+FOREIGN KEY (UsersIdUsers) REFERENCES Users (idUsers) ON DELETE CASCADE
 );
-INSERT INTO cards (balance,status,cardNumber, PIN,users_idUsers) VALUES (800,'active','1234123412341234','1234',1),
+INSERT INTO cards (balance,status,cardNumber, PIN,usersIdUsers) VALUES (800,'active','1234123412341234','1234',1),
 																		(500,'blocked','5678567856785678','5678',1),
 																		(1000,'active','1234432112344321','4321',2),
 																		(950,'active','1222111133334445','5673',4),
@@ -60,11 +60,8 @@ ATMs_idATMs INT NOT NULL,
 PRIMARY KEY(idCash_Collection),
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs) ON DELETE CASCADE
 );
-<<<<<<< HEAD
-INSERT INTO cash_collection(schedule,ATMs_idATMs) VALUES ('2021-05-25',1),
-=======
+
 INSERT INTO cash_collection(schedule ,ATMs_idATMs) VALUES ('2021-05-25',1),
->>>>>>> 915ca7cd0734faf34118fb487e885497786f5bb9
 													 ('2021-06-01',1),
                                                      ('2021-06-02',2),
                                                      ('2021-06-03',2),
