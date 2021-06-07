@@ -5,10 +5,9 @@ import lombok.Data;
 @Data
 public class ATM {
     int idATM;
-    double numberAtm;
     String banknote;
     int commission;
-    Card idCard;
-    Bank idBank;
-    CashCollection idCashCollection;
+    int idCard;
+    int idBank;
+    int idCashCollection;
 }

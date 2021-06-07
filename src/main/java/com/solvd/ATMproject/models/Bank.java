@@ -7,5 +7,5 @@ public class Bank {
     int idBank;
     String name;
     int registerNumber;
-    ATM idATM;
+    int idATM;
 }
