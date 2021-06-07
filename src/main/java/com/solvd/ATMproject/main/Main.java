@@ -1,9 +1,6 @@
 package com.solvd.ATMproject.main;
 
-import com.solvd.ATMproject.service.ATMService;
-import com.solvd.ATMproject.service.AddressService;
-import com.solvd.ATMproject.service.BalanceService;
-import com.solvd.ATMproject.service.CardService;
+import com.solvd.ATMproject.service.*;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -15,8 +12,12 @@ public class Main {
         AddressService.getAddress("Mira");
         log.info("You choose the ATM on Mira street");
 
+        CollectionService.getCashCollectionTime();
+
         CardService.getStatusCardByNumberCard("1234123412341234");
         log.info("Your card is active");
+
+        OperationService.getOperation();
 
         ATMService.getCommissionByCurrency("dollars");
         log.info("You choose the currency - dollars");

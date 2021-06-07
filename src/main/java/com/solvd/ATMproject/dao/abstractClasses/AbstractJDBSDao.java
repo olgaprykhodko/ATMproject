@@ -2,7 +2,7 @@ package com.solvd.ATMproject.dao.abstractClasses;
 
 import com.solvd.ATMproject.pool.ConnectionPool;
 
-public class AbstractJDBCDao {
+public class AbstractJDBSDao {
     private ConnectionPool connectionPool = ConnectionPool.newInstance();
 
     protected ConnectionPool getConnectionPool() {
