@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class AddressDAO extends AbstractJDBSDao implements IAddressDAO {
 
     private final static String INSERT_ADDRESS = "INSERT INTO ADDRESS (country, city, street) VALUES (?, ?, ?)";
-    private final static String GET_ADDRESS_BY_STREET = "SELECT * FROM ADDRESS WHERE Street = ?";
+    private final static String GET_ADDRESS_BY_STREET = "SELECT * FROM addresses WHERE Street = ?";
 
     @Override
     public void create(Address entity) {

@@ -8,12 +8,11 @@ import java.util.Scanner;
 
 @Log4j2
 public class AddressService {
-    public static AddressDAO setNewAddress(String street, Scanner scanner) throws ExceptionDAO {
+    public static AddressDAO setAddress(String street, Scanner scanner) throws ExceptionDAO {
 
         AddressDAO address = new AddressDAO();
 
         if (address.read(street) == null) {
-
             log.info("The Address doesn't exist. Please insert the valid data");
             log.info("Enter the Country");
             String country = scanner.nextLine();
