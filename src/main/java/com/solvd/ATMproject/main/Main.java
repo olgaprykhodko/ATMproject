@@ -24,5 +24,7 @@ public class Main {
 
         BalanceService.getCardBalance(800);
         log.info("Your balance is 800");
+
+        log.info("Thank you for using this ATM");
     }
 }
