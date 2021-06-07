@@ -51,22 +51,17 @@ public class CardDAO extends AbstractJDBSDao implements ICardDAO {
 
     @Override
     public void create(Card entity) {
-
         throw new UnsupportedOperationException();
     }
 
     @Override
     public void update(Card entity) {
-
         throw new UnsupportedOperationException();
     }
 
 
     @Override
     public void delete(Card entity) {
-
         throw new UnsupportedOperationException();
     }
-
-
 }
