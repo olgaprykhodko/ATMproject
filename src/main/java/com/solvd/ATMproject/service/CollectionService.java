@@ -1,6 +1,6 @@
 package com.solvd.ATMproject.service;
 
-import com.solvd.ATMproject.dao.jdbs.realization.CollectionTimeDAO;
+import com.solvd.ATMproject.dao.jdbc.realization.CollectionTimeDAO;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.solvd.ATMproject.dao.jdbs.realization;
+package com.solvd.ATMproject.dao.jdbc.realization;
 
 import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
 import com.solvd.ATMproject.dao.interfaces.IAtmDAO;

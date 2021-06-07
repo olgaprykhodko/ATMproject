@@ -1,9 +1,8 @@
-package com.solvd.ATMproject.dao.jdbs.realization;
+package com.solvd.ATMproject.dao.jdbc.realization;
 
 import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
 import com.solvd.ATMproject.dao.interfaces.IOperation;
 import com.solvd.ATMproject.models.Operation;
-import org.apache.commons.lang3.NotImplementedException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class OperationDAO extends AbstractJDBSDao implements IOperation {
     private final static Logger LOGGER = LogManager.getLogger(CardDAO.class);
@@ -20,17 +18,17 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
 
     @Override
     public void create(Operation entity) {
-      throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void update(Operation entity) {
-       throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public Operation getById(int id) {throw new UnsupportedOperationException();
-
+    public Operation getById(int id) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -52,7 +50,7 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));
                 operation.setOperationName(resultSet.getString(2));
-                LOGGER.debug("Operation: "+ operation);
+                LOGGER.debug("Operation: " + operation);
             }
         } catch (SQLException ex) {
             LOGGER.error("Error:" + ex);
