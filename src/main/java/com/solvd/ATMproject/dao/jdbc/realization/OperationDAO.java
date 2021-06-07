@@ -1,6 +1,6 @@
-package com.solvd.ATMproject.dao.jdbs.realization;
+package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IOperation;
 import com.solvd.ATMproject.models.Operation;
 import lombok.extern.log4j.Log4j2;
@@ -12,23 +12,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Log4j2
-public class OperationDAO extends AbstractJDBSDao implements IOperation {
+public class OperationDAO extends AbstractJDBCDao implements IOperation {
     private final String GET_OPERATION = "SELECT operationName, idOperation FROM Operation";
     private final String GET_OPERATION_BY_ID = "SELECT idOperation, operationName  FROM Operation WHERE idOperation  = ?";
 
     @Override
     public void create(Operation entity) {
-        throw new NotImplementedException("Method 'delete' not implemented for " + this.getClass());
+        throw new NotImplementedException("Method 'create' not implemented for " + this.getClass());
     }
 
     @Override
     public void update(Operation entity) {
-        throw new NotImplementedException("Method 'delete' not implemented for " + this.getClass());
+        throw new NotImplementedException("Method 'update' not implemented for " + this.getClass());
     }
 
     @Override
     public Operation getById(int id) {
-        throw new NotImplementedException("Method 'delete' not implemented for " + this.getClass());
+        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
 
     }
 

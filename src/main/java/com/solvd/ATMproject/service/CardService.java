@@ -1,7 +1,7 @@
 package com.solvd.ATMproject.service;
 
 import com.solvd.ATMproject.dao.interfaces.ICardDAO;
-import com.solvd.ATMproject.dao.jdbs.realization.CardDAO;
+import com.solvd.ATMproject.dao.jdbc.realization.CardDAO;
 
 import lombok.extern.log4j.Log4j2;
 

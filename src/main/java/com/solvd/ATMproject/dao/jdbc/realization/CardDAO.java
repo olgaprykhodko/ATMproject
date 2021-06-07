@@ -1,21 +1,21 @@
-package com.solvd.ATMproject.dao.jdbs.realization;
+package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
-import com.solvd.ATMproject.dao.interfaces.IBalanceDAO;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
+import com.solvd.ATMproject.dao.interfaces.ICardDAO;
 import com.solvd.ATMproject.models.Card;
-import lombok.extern.log4j.Log4j2;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@Log4j2
-public class BalanceDAO extends AbstractJDBSDao implements IBalanceDAO {
-    private String GET_BY_ID_CARD = "SELECT balance FROM cards WHERE cardNumber = ?";
+public class CardDAO extends AbstractJDBCDao implements ICardDAO {
+    private final static Logger LOGGER = LogManager.getLogger(CardDAO.class);
+    private String GET_BY_ID_CARD = "SELECT status FROM cards WHERE UsersIdUsers = ?";
 
     @Override
-    public void read(int balance) {
+    public Card read(String cardNumber) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -23,24 +23,25 @@ public class BalanceDAO extends AbstractJDBSDao implements IBalanceDAO {
         try {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_BY_ID_CARD);
-            preparedStatement.setInt(1, balance);
+            preparedStatement.setString(1, cardNumber);
             resultSet = preparedStatement.executeQuery();
-            log.debug("Request was successful.");
+            LOGGER.debug("Request was successful.");
             if (resultSet.next()) {
                 card = new Card();
-                card.setBalance(resultSet.getInt("balance"));
+                card.setStatus(resultSet.getString("cardNumber"));
             }
         } catch (SQLException ex) {
-            log.error("Error:" + ex);
+            LOGGER.error("Error:" + ex);
         } finally {
             try {
                 preparedStatement.close();
                 resultSet.close();
             } catch (SQLException ex) {
-                log.error(ex);
+                LOGGER.error(ex);
             }
             getConnectionPool().returnConnection(connection);
         }
+        return card;
     }
 
     @Override
@@ -62,10 +63,5 @@ public class BalanceDAO extends AbstractJDBSDao implements IBalanceDAO {
     @Override
     public void delete(Card entity) {
         throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Card read(Integer number) {
-        return null;
     }
 }
