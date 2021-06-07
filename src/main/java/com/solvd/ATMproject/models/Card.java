@@ -7,7 +7,8 @@ public class Card {
     int idCard;
     int balance;
     String status;
-    int cardNumber;
+    int idUser;
+    String cardNumber;
     int PIN;
-    User isUser;
+
 }

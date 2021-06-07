@@ -71,6 +71,11 @@ public class AddressDAO extends AbstractJDBSDao implements IAddressDAO {
     }
 
     @Override
+    public Address getById(int id) {
+        return null;
+    }
+
+    @Override
     public Address read(String street) {
         Connection con = getConnectionPool().takeConnection();
         PreparedStatement ps = null;
@@ -99,10 +104,6 @@ public class AddressDAO extends AbstractJDBSDao implements IAddressDAO {
         return address;
     }
 
-    @Override
-    public Address getById(int id) {
-        throw new NotImplementedException("Method 'getById' not implemented for " + this.getClass());
-    }
 
     @Override
     public void delete(Address entity) {

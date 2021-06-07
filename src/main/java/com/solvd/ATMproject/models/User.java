@@ -7,6 +7,6 @@ public class User {
     int idUser;
     String firstName;
     String lastName;
-    int cardNumber;
+    long cardNumber;
     int PIN;
 }
