@@ -1,6 +1,6 @@
 package com.solvd.ATMproject.service;
 
-import com.solvd.ATMproject.dao.jdbs.realization.OperationDAO;
+import com.solvd.ATMproject.dao.jdbc.realization.OperationDAO;
 import com.solvd.ATMproject.models.Operation;
 import lombok.extern.log4j.Log4j2;
 

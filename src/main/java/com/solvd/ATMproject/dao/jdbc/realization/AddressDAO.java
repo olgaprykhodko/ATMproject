@@ -1,6 +1,6 @@
-package com.solvd.ATMproject.dao.jdbs.realization;
+package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IAddressDAO;
 import com.solvd.ATMproject.models.Address;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Log4j2
-public class AddressDAO extends AbstractJDBSDao implements IAddressDAO {
+public class AddressDAO extends AbstractJDBCDao implements IAddressDAO {
 
     private final static String INSERT_ADDRESS = "INSERT INTO ADDRESS (country, city, street) VALUES (?, ?, ?)";
     private final static String GET_ADDRESS_BY_STREET = "SELECT ATMs_idATMs FROM address WHERE street = ?";

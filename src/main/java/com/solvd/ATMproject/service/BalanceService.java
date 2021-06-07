@@ -1,7 +1,7 @@
 package com.solvd.ATMproject.service;
 
 import com.solvd.ATMproject.dao.interfaces.IBalanceDAO;
-import com.solvd.ATMproject.dao.jdbs.realization.BalanceDAO;
+import com.solvd.ATMproject.dao.jdbc.realization.BalanceDAO;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
