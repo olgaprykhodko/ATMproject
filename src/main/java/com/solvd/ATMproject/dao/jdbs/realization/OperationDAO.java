@@ -15,27 +15,27 @@ import java.util.ArrayList;
 
 public class OperationDAO extends AbstractJDBSDao implements IOperation {
     private final static Logger LOGGER = LogManager.getLogger(CardDAO.class);
-    private final String GET_OPERATION = "SELECT operationName, idOperation FROM Operation";
-    private final String GET_OPERATION_BY_ID = "SELECT idOperation, operationName  FROM Operation WHERE idOperation  = ?";
+    private final String GET_OPERATION = "SELECT operationName, idOperation FROM Operations";
+    private final String GET_OPERATION_BY_ID = "SELECT idOperations, operationName FROM Operations WHERE idOperations = ?";
 
     @Override
     public void create(Operation entity) {
-        throw new NotImplementedException("Method 'delete' not implemented for " + this.getClass());
+      throw new UnsupportedOperationException();
     }
 
     @Override
     public void update(Operation entity) {
-        throw new NotImplementedException("Method 'delete' not implemented for " + this.getClass());
+       throw new UnsupportedOperationException();
     }
 
     @Override
-    public Operation getById(int id) {throw new NotImplementedException("Method 'delete' not implemented for " + this.getClass());
+    public Operation getById(int id) {throw new UnsupportedOperationException();
 
     }
 
     @Override
     public void delete(Operation entity) {
-        throw new NotImplementedException("Method 'delete' not implemented for " + this.getClass());
+        throw new UnsupportedOperationException();
     }
 
     public Operation readOperation() {
@@ -76,7 +76,7 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
         Operation operation = null;
         try {
             connection = getConnectionPool().takeConnection();
-            preparedStatement = connection.prepareStatement(GET_OPERATION);
+            preparedStatement = connection.prepareStatement(GET_OPERATION_BY_ID);
             preparedStatement.setInt(1, idOperation);
             resultSet = preparedStatement.executeQuery();
             LOGGER.debug("Request was successful.");
