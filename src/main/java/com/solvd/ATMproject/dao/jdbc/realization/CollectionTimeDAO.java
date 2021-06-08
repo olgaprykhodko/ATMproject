@@ -56,7 +56,6 @@ public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
         } finally {
             try {
                 preparedStatement.close();
-                resultSet.close();
             } catch (SQLException ex) {
                 log.error(ex);
             }

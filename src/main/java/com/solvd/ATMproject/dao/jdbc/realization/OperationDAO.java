@@ -4,8 +4,6 @@ import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IOperation;
 import com.solvd.ATMproject.models.Operation;
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

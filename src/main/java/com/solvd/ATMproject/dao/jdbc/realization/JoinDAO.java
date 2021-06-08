@@ -1,6 +1,6 @@
 package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IJoinDAO;
 import com.solvd.ATMproject.models.ATM;
 import lombok.extern.log4j.Log4j2;
@@ -10,31 +10,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Log4j2
-public class JoinDAO extends AbstractJDBSDao implements IJoinDAO {
+public class JoinDAO extends AbstractJDBCDao implements IJoinDAO {
     private String GET_BY_ID_ATM = "SELECT ATMsIdATMs FROM Address Ad JOIN ATMs A ON (Ad.ATMsIdATMs=A.idATMs)";
+
     @Override
     public void create(ATM entity) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void update(ATM entity) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public ATM getById(int id) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void delete(ATM entity) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public ATM read(String s) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override

@@ -4,8 +4,6 @@ import com.solvd.ATMproject.models.Address;
 import com.solvd.ATMproject.service.*;
 import lombok.extern.log4j.Log4j2;
 
-import javax.xml.bind.JAXBException;
-import java.io.IOException;
 import java.util.Scanner;
 
 @Log4j2
@@ -18,14 +16,14 @@ public class Main {
         String street = scanner.nextLine();
 
 
-        JoinService.getATMByStreet(1);
+        JoinService.getATMByStreet(street);
 
         Address address = AddressService.getAddress(street);
         scanner.nextLine();
 
         log.info("You choose the ATM on Mira street");
 
-//        CollectionService.getCashCollectionTime();
+       // CollectionService.getCashCollectionTime();
 
         CardService.getStatusCardByNumberCard("1234123412341234");
         log.info("Your card is active");
