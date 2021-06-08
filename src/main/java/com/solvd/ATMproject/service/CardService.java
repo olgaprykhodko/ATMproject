@@ -10,5 +10,6 @@ public class CardService {
     public static void getStatusCardByNumberCard(String cardNumber) {
         ICardDAO cardDAO = new CardDAO();
         cardDAO.read(cardNumber);
+        log.info("Your card is active");
     }
 }

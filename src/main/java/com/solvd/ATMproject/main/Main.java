@@ -11,29 +11,23 @@ public class Main {
     public static void main(String[] args) {
 
         log.info("Welcome to BSB bank");
+
         Scanner scanner = new Scanner(System.in);
-        log.info("Please enter the name of street to find into the Data Base");
+        log.info("Please enter the name of street to find the ATM in the DataBase");
         String street = scanner.nextLine();
-
         JoinService.getATMByStreet(street);
-
         Address address = AddressService.getAddress(street);
-
-        log.info("You have chosen the ATM on " + street + " street");
-
-       // CollectionService.getCashCollectionTime();
-
+        CollectionService.getCashCollectionTime();
         CardService.getStatusCardByNumberCard("1234123412341234");
-        log.info("Your card is active");
-
-        OperationService.getOperation();
-
+        int op = OperationService.getOperation();
         ATMService.getCommissionByCurrency("dollars");
-        log.info("You have chosen the currency - dollars");
-
-        BalanceService.getCardBalance(800);
-        log.info("Your balance is 800");
-
+        int balance = 800;
+        BalanceService.getCardBalance(balance);
+        log.info("Please enter the sum");
+        int sum = Integer.parseInt(scanner.nextLine());
+        WhichOperation wh = new WhichOperation();
+        wh.whichOperation(op, balance, sum);
         log.info("Thank you for using this ATM");
+        scanner.close();
     }
 }
