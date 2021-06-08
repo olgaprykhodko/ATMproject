@@ -1,12 +1,11 @@
 package com.solvd.ATMproject.service;
 
-import com.solvd.ATMproject.dao.interfaces.IAtmDAO;
-import com.solvd.ATMproject.dao.jdbc.realization.AtmDAO;
 import com.solvd.ATMproject.dao.jdbc.realization.JoinDAO;
+import com.solvd.ATMproject.models.ATM;
 
 public class JoinService {
-    public static void getATMByStreet(int ATMsIdATMs){
+    public static ATM getATMByStreet(String street){
         JoinDAO joinDAO=new JoinDAO();
-        joinDAO.getAtmByStreet("Mira");
+        return joinDAO.getAtmByStreet(street);
     }
 }
