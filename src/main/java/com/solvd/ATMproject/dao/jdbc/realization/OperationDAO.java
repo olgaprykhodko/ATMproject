@@ -58,7 +58,6 @@ public class OperationDAO extends AbstractJDBCDao implements IOperation {
         } finally {
             try {
                 preparedStatement.close();
-                resultSet.close();
             } catch (SQLException ex) {
                 log.error(ex);
             }
