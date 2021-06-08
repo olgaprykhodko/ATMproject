@@ -58,7 +58,6 @@ public class BalanceDAO extends AbstractJDBCDao implements IBalanceDAO {
         throw new UnsupportedOperationException();
     }
 
-
     @Override
     public void delete(Card entity) {
         throw new UnsupportedOperationException();

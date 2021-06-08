@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 @Log4j2
 public class OperationDAO extends AbstractJDBCDao implements IOperation {
-    private final String GET_OPERATION = "SELECT operationName, idOperation FROM Operations";
+    private final String GET_OPERATION = "SELECT idOperations, operationName FROM Operations";
     private final String GET_OPERATION_BY_ID = "SELECT idOperations, operationName FROM Operations WHERE idOperations = ?";
 
     @Override
@@ -45,11 +45,11 @@ public class OperationDAO extends AbstractJDBCDao implements IOperation {
             preparedStatement = connection.prepareStatement(GET_OPERATION);
             resultSet = preparedStatement.executeQuery();
             log.debug("List of operations: ");
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));
                 operation.setOperationName(resultSet.getString(2));
-                log.debug("Operation: " + operation);
+                log.debug("Operation: " + operation.getIdOperation() + " " + operation.getOperationName());
             }
         } catch (SQLException ex) {
             log.error("Error:" + ex);
@@ -65,7 +65,7 @@ public class OperationDAO extends AbstractJDBCDao implements IOperation {
     }
 
     @Override
-    public Operation read(Integer idOperation) {
+    public Operation read(Integer idOperations) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -73,7 +73,7 @@ public class OperationDAO extends AbstractJDBCDao implements IOperation {
         try {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_OPERATION_BY_ID);
-            preparedStatement.setInt(1, idOperation);
+            preparedStatement.setInt(1, idOperations);
             resultSet = preparedStatement.executeQuery();
             log.debug("Request was successful.");
             if (resultSet.next()) {
