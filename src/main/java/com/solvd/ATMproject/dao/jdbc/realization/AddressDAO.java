@@ -89,6 +89,8 @@ public class AddressDAO extends AbstractJDBCDao implements IAddressDAO {
             if (rs.next()) {
                 address = new Address();
                 address.setStreet(rs.getString("street"));
+                address.setIdATM(rs.getInt("idATMs"));
+                log.debug("Id ATMs" + address);
             }
         } catch (SQLException ex) {
             log.error("Error:" + ex);
