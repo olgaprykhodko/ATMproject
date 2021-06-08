@@ -1,17 +1,17 @@
 package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.ICardDAO;
 import com.solvd.ATMproject.models.Card;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CardDAO extends AbstractJDBSDao implements ICardDAO {
-    private final static Logger LOGGER = LogManager.getLogger(CardDAO.class);
+@Log4j2
+public class CardDAO extends AbstractJDBCDao implements ICardDAO {
     private String GET_BY_ID_CARD = "SELECT status FROM cards WHERE UsersIdUsers = ?";
 
     @Override
@@ -25,19 +25,19 @@ public class CardDAO extends AbstractJDBSDao implements ICardDAO {
             preparedStatement = connection.prepareStatement(GET_BY_ID_CARD);
             preparedStatement.setString(1, cardNumber);
             resultSet = preparedStatement.executeQuery();
-            LOGGER.debug("Request was successful.");
+            log.debug("Request was successful.");
             if (resultSet.next()) {
                 card = new Card();
                 card.setStatus(resultSet.getString("cardNumber"));
             }
         } catch (SQLException ex) {
-            LOGGER.error("Error:" + ex);
+            log.error("Error:" + ex);
         } finally {
             try {
                 preparedStatement.close();
                 resultSet.close();
             } catch (SQLException ex) {
-                LOGGER.error(ex);
+                log.error(ex);
             }
             getConnectionPool().returnConnection(connection);
         }

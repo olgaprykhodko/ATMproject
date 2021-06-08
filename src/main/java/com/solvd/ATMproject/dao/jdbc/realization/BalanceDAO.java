@@ -1,6 +1,6 @@
 package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IBalanceDAO;
 import com.solvd.ATMproject.models.Card;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Log4j2
-public class BalanceDAO extends AbstractJDBSDao implements IBalanceDAO {
+public class BalanceDAO extends AbstractJDBCDao implements IBalanceDAO {
     private String GET_BY_ID_CARD = "SELECT balance FROM cards WHERE cardNumber = ?";
 
     @Override

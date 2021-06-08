@@ -5,6 +5,7 @@ import com.solvd.ATMproject.models.Operation;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Scanner;
+
 @Log4j2
 public class OperationService {
     public static void getOperation() {
