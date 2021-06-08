@@ -1,6 +1,6 @@
 package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IDateDAO;
 import com.solvd.ATMproject.models.CashCollection;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 @Log4j2
-public class CollectionTimeDAO extends AbstractJDBSDao implements IDateDAO {
+public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
     private String GET_TIME = "SELECT Schedule FROM Cash_Collection WHERE Schedule = ?";
 
     @Override
