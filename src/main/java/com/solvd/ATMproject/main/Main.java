@@ -15,7 +15,6 @@ public class Main {
         log.info("Please enter the name of street to find into the Data Base");
         String street = scanner.nextLine();
 
-
         JoinService.getATMByStreet(street);
 
         Address address = AddressService.getAddress(street);

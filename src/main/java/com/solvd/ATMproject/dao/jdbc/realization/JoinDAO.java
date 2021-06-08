@@ -59,7 +59,6 @@ public class JoinDAO extends AbstractJDBCDao implements IJoinDAO {
             } finally {
                 try {
                     preparedStatement.close();
-
                 } catch (SQLException ex) {
                     log.error(ex);
                 }
