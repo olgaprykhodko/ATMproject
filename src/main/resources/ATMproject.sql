@@ -1,4 +1,4 @@
-
+CREATE DATABASE ATMproject;
 USE ATMProject;
 CREATE TABLE users(
 idUsers INT NOT NULL AUTO_INCREMENT,
@@ -110,9 +110,9 @@ ATMs_idATMs INT NOT NULL,
 PRIMARY KEY(idAddress),
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
 );
-INSERT INTO address (street,country,ATMs_idATMs) VALUES ('Mira','Ukraine',1),
-											('Proletarskaya','Belarus',2),
-                                            ('Pryluzhna','Ukraine',3);
+INSERT INTO address (street,country,ATMs_idATMs) VALUES ('Mira 45','Ukraine',1),
+											('Proletarskaya 34','Belarus',2),
+                                            ('Pryluzhna 4/15','Ukraine',3);
 CREATE TABLE Operations(
 idOperations INT NOT NULL AUTO_INCREMENT,
 operationName VARCHAR(45) NOT NULL,
