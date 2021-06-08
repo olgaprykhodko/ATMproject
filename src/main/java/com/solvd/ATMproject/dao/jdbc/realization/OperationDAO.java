@@ -36,6 +36,7 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public Operation readOperation() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -50,14 +51,13 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));
                 operation.setOperationName(resultSet.getString(2));
-                LOGGER.debug("Operation: " + operation);
+                LOGGER.info("Operation: " + operation.getOperationName());
             }
         } catch (SQLException ex) {
             LOGGER.error("Error:" + ex);
         } finally {
             try {
                 preparedStatement.close();
-                resultSet.close();
             } catch (SQLException ex) {
                 LOGGER.error(ex);
             }

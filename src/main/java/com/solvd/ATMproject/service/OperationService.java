@@ -12,9 +12,9 @@ public class OperationService {
         Operation operationName = new Operation();
         operation.readOperation();
         Scanner scanner = new Scanner(System.in);
-        log.debug("Please choose the operation");
+        log.info("Please choose the operation");
         operationName = operation.read(Integer.valueOf(scanner.nextLine()));
-        log.debug("You have chosen operation " + operationName);
+        log.info("You have chosen operation " + operationName);
         scanner.close();
     }
 }

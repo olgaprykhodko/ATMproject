@@ -11,8 +11,8 @@ public class CollectionService {
         CollectionTimeDAO cTime = new CollectionTimeDAO();
         Date date = new Date();
         if ( cTime.read(date) != null)
-            log.debug("The ATM is active");
-        else log.debug("Sorry the ATM is currently on cash collection. Please try later");
+            log.info("The ATM is active");
+        else log.info("Sorry the ATM is currently on cash collection. Please try later");
 
     }
 }
