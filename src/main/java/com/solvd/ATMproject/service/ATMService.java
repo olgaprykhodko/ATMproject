@@ -6,9 +6,9 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class ATMService {
-
     public static void getCommissionByCurrency(String currency) {
         IAtmDAO atmDAO = new AtmDAO();
         atmDAO.read(currency);
+        log.info("You have chosen the currency - " + currency);
     }
 }
