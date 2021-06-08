@@ -7,10 +7,10 @@ import java.util.Date;
 
 @Log4j2
 public class CollectionService {
-    public static void getCashCollectionTime(){
+    public static void getCashCollectionTime() {
         CollectionTimeDAO cTime = new CollectionTimeDAO();
         Date date = new Date();
-        if ( cTime.read(date) != null)
+        if (cTime.read(date) != null)
             log.debug("The ATM is active");
         else log.debug("Sorry the ATM is currently on cash collection. Please try later");
 
