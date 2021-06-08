@@ -12,7 +12,7 @@ public class Main {
         AddressService.getAddress("Mira");
         log.info("You choose the ATM on Mira street");
 
-        CollectionService.getCashCollectionTime();
+       // CollectionService.getCashCollectionTime();
 
         CardService.getStatusCardByNumberCard("1234123412341234");
         log.info("Your card is active");
