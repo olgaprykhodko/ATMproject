@@ -14,6 +14,7 @@ import java.sql.SQLException;
 public class AtmDAO extends AbstractJDBSDao implements IAtmDAO {
     private String GET_BY_BANKNOTE = "SELECT commission FROM ATMs WHERE banknote = ?";
 
+
     @Override
     public ATM read(String currency) {
         Connection connection = null;
@@ -63,4 +64,7 @@ public class AtmDAO extends AbstractJDBSDao implements IAtmDAO {
     public void delete(ATM entity) {
         throw new UnsupportedOperationException();
     }
-}
+
+    }
+
+
