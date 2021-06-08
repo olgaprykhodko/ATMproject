@@ -13,6 +13,5 @@ public class CollectionService {
         if ( cTime.read(date) != null)
             log.info("The ATM is active");
         else log.info("Sorry the ATM is currently on cash collection. Please try later");
-
     }
 }
