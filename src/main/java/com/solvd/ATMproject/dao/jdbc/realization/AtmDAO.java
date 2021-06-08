@@ -26,10 +26,12 @@ public class AtmDAO extends AbstractJDBCDao implements IAtmDAO {
             preparedStatement = connection.prepareStatement(GET_BY_BANKNOTE);
             preparedStatement.setString(1, currency);
             resultSet = preparedStatement.executeQuery();
-            log.debug("Request was successful.");
+            log.debug("Request was successful");
             if (resultSet.next()) {
                 atm = new ATM();
+                atm.setBanknote(resultSet.getString("banknote"));
                 atm.setCommission(resultSet.getInt("commission"));
+                log.debug("Commission is" + atm.getCommission());
             }
         } catch (SQLException ex) {
             log.error("Error:" + ex);

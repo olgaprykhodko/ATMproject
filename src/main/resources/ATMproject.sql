@@ -61,12 +61,12 @@ PRIMARY KEY(idCash_Collection),
 FOREIGN KEY (ATMs_idATMs) REFERENCES ATMs (idATMs) ON DELETE CASCADE
 );
 
-INSERT INTO cash_collection(schedule ,ATMs_idATMs) VALUES ('2021-05-25',1),
-													 ('2021-06-01',1),
-                                                     ('2021-06-02',2),
-                                                     ('2021-06-03',2),
-                                                     ('2021-06-04',3),
-                                                     ('2021-06-05',3);
+INSERT INTO cash_collection(schedule ,ATMs_idATMs) VALUES ('2021-06-08',1),
+													 ('2021-06-09',1),
+                                                     ('2021-06-10',2),
+                                                     ('2021-06-06',2),
+                                                     ('2021-06-08',3),
+                                                     ('2021-06-10',3);
 CREATE TABLE banknotes(
 idBanknotes INT NOT NULL AUTO_INCREMENT,
 denomination INT NOT NULL,
