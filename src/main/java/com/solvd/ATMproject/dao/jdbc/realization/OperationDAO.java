@@ -1,8 +1,9 @@
 package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IOperation;
 import com.solvd.ATMproject.models.Operation;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,8 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OperationDAO extends AbstractJDBSDao implements IOperation {
-    private final static Logger LOGGER = LogManager.getLogger(CardDAO.class);
+@Log4j2
+public class OperationDAO extends AbstractJDBCDao implements IOperation {
     private final String GET_OPERATION = "SELECT operationName, idOperation FROM Operations";
     private final String GET_OPERATION_BY_ID = "SELECT idOperations, operationName FROM Operations WHERE idOperations = ?";
 
@@ -45,20 +46,20 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_OPERATION);
             resultSet = preparedStatement.executeQuery();
-            LOGGER.debug("List of operations: ");
+            log.debug("List of operations: ");
             if (resultSet.next()) {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));
                 operation.setOperationName(resultSet.getString(2));
-                LOGGER.debug("Operation: " + operation);
+                log.debug("Operation: " + operation);
             }
         } catch (SQLException ex) {
-            LOGGER.error("Error:" + ex);
+            log.error("Error:" + ex);
         } finally {
             try {
                 preparedStatement.close();
             } catch (SQLException ex) {
-                LOGGER.error(ex);
+                log.error(ex);
             }
             getConnectionPool().returnConnection(connection);
         }
@@ -76,20 +77,20 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
             preparedStatement = connection.prepareStatement(GET_OPERATION_BY_ID);
             preparedStatement.setInt(1, idOperation);
             resultSet = preparedStatement.executeQuery();
-            LOGGER.debug("Request was successful.");
+            log.debug("Request was successful.");
             if (resultSet.next()) {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));
                 operation.setOperationName(resultSet.getString(2));
             }
         } catch (SQLException ex) {
-            LOGGER.error("Error:" + ex);
+            log.error("Error:" + ex);
         } finally {
             try {
                 preparedStatement.close();
                 resultSet.close();
             } catch (SQLException ex) {
-                LOGGER.error(ex);
+                log.error(ex);
             }
             getConnectionPool().returnConnection(connection);
         }

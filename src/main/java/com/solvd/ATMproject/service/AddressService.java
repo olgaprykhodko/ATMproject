@@ -9,9 +9,10 @@ import java.util.Scanner;
 
 @Log4j2
 public class AddressService {
-    public static Address getAddress(String street) {
+
+    public static Address getAddress(String street)  {
+
         IAddressDAO addressDAO = new AddressDAO();
         return addressDAO.read(street);
     }
 }
-
