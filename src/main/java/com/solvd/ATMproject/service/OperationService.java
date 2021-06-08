@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 @Log4j2
 public class OperationService {
-    public static void getOperation() {
+    public static int getOperation() {
         OperationDAO operation = new OperationDAO();
         Operation operationName = new Operation();
         Scanner scanner = new Scanner(System.in);
@@ -16,6 +16,6 @@ public class OperationService {
         log.info("Please choose the operation");
         operationName = operation.read(Integer.valueOf(scanner.nextLine()));
         log.info("You have chosen operation " + operationName.getOperationName());
-        scanner.close();
+        return operationName.getIdOperation();
     }
 }

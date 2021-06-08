@@ -9,5 +9,6 @@ public class BalanceService {
     public static void getCardBalance(int balance) {
         IBalanceDAO balanceDAO = new BalanceDAO();
         balanceDAO.read(balance);
+        log.info("Your balance is " + balance);
     }
 }

@@ -8,11 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 
 @Log4j2
 public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
     private String GET_TIME = "SELECT Schedule FROM CashCollection WHERE Schedule = ?";
+
 
     @Override
     public void create(CashCollection entity) {
@@ -43,7 +45,7 @@ public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
         try {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_TIME);
-            preparedStatement.setDate(2, (java.sql.Date) date);
+            preparedStatement.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
             resultSet = preparedStatement.executeQuery();
             log.debug("Request was successful.");
             if (resultSet.next()) {
