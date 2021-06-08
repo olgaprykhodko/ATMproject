@@ -1,19 +1,18 @@
 package com.solvd.ATMproject.dao.jdbc.realization;
 
-import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBSDao;
+import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IOperation;
 import com.solvd.ATMproject.models.Operation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OperationDAO extends AbstractJDBSDao implements IOperation {
-    private final static Logger LOGGER = LogManager.getLogger(CardDAO.class);
-    private final String GET_OPERATION = "SELECT operationName, idOperation FROM Operations";
+@Log4j2
+public class OperationDAO extends AbstractJDBCDao implements IOperation {
+    private final String GET_OPERATION = "SELECT idOperations, operationName FROM Operations";
     private final String GET_OPERATION_BY_ID = "SELECT idOperations, operationName FROM Operations WHERE idOperations = ?";
 
     @Override
@@ -36,7 +35,6 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public Operation readOperation() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -46,20 +44,20 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_OPERATION);
             resultSet = preparedStatement.executeQuery();
-            LOGGER.debug("List of operations: ");
-            if (resultSet.next()) {
+            log.debug("List of operations: ");
+            while (resultSet.next()) {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));
                 operation.setOperationName(resultSet.getString(2));
-                LOGGER.info("Operation: " + operation.getOperationName());
+                log.debug("Operation: " + operation.getIdOperation() + " " + operation.getOperationName());
             }
         } catch (SQLException ex) {
-            LOGGER.error("Error:" + ex);
+            log.error("Error:" + ex);
         } finally {
             try {
                 preparedStatement.close();
             } catch (SQLException ex) {
-                LOGGER.error(ex);
+                log.error(ex);
             }
             getConnectionPool().returnConnection(connection);
         }
@@ -67,7 +65,7 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
     }
 
     @Override
-    public Operation read(Integer idOperation) {
+    public Operation read(Integer idOperations) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -75,22 +73,22 @@ public class OperationDAO extends AbstractJDBSDao implements IOperation {
         try {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_OPERATION_BY_ID);
-            preparedStatement.setInt(1, idOperation);
+            preparedStatement.setInt(1, idOperations);
             resultSet = preparedStatement.executeQuery();
-            LOGGER.debug("Request was successful.");
+            log.debug("Request was successful.");
             if (resultSet.next()) {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));
                 operation.setOperationName(resultSet.getString(2));
             }
         } catch (SQLException ex) {
-            LOGGER.error("Error:" + ex);
+            log.error("Error:" + ex);
         } finally {
             try {
                 preparedStatement.close();
                 resultSet.close();
             } catch (SQLException ex) {
-                LOGGER.error(ex);
+                log.error(ex);
             }
             getConnectionPool().returnConnection(connection);
         }

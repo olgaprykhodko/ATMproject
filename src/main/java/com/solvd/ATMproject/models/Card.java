@@ -10,5 +10,4 @@ public class Card {
     int idUser;
     String cardNumber;
     int PIN;
-
 }
