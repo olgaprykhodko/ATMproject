@@ -103,11 +103,11 @@ CREATE TABLE Address(
 idAddress INT NOT NULL AUTO_INCREMENT,
 street VARCHAR(45) NOT NULL,
 country VARCHAR(45) NOT NULL,
-ATMs_idATMs INT NOT NULL,
+idATMs INT NOT NULL,
 PRIMARY KEY(idAddress),
-FOREIGN KEY (ATMsIdATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
+FOREIGN KEY (IdATMs) REFERENCES ATMs(idATMs) ON DELETE CASCADE
 );
-INSERT INTO address (street,country,ATMsIdATMs) VALUES ('Mira 45','Ukraine',1),
+INSERT INTO address (street,country,IdATMs) VALUES ('Mira 45','Ukraine',1),
 											('Proletarskaya 34','Belarus',2),
                                             ('Pryluzhna 4/15','Ukraine',3);
 CREATE TABLE Operations(

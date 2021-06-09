@@ -1,3 +1,4 @@
+
 package com.solvd.ATMproject.dao.jdbc.realization;
 
 import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 @Log4j2
 public class AtmDAO extends AbstractJDBCDao implements IAtmDAO {
     private String GET_BY_ID = "SELECT commission FROM ATMs WHERE idATMs = ?";
+
 
     @Override
     public ATM getById(int idATMs) {

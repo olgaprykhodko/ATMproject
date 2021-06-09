@@ -18,7 +18,7 @@ public class Main {
         CollectionService.getCashCollectionTime();
         CardService.getStatusCardByNumberCard("1234123412341234");
         int op = OperationService.getOperation();
-        ATMService.getCommissionById(1);
+        AddressService.getCommissionBy("Mira 45");
         BalanceService.getCardBalance("1234123412341234");
         log.info("Please enter the sum");
         int balance = 800;
