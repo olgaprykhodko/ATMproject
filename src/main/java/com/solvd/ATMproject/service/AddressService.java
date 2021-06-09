@@ -14,6 +14,7 @@ public class AddressService {
         Address address = addressDAO.read(street);
         log.info("The ATM on " + street + " has id ATM = " + address.getIdATM());
     }
+
     public static void getCommissionBy(String street) {
         IAddressDAO addressDAO = new AddressDAO();
         ATM atm = addressDAO.getBy(street);
