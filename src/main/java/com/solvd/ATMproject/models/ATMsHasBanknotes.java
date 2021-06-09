@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ATMsHasBanknotes {
-    int ATMsIdATMs;
-    int BanknotesIdBanknotes;
+    private int ATMsIdATMs;
+    private int BanknotesIdBanknotes;
 }

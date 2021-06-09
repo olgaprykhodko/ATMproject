@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class User {
-    int idUser;
-    String firstName;
-    String lastName;
-    long cardNumber;
-    int PIN;
+    private int idUser;
+    private String firstName;
+    private String lastName;
+    private long cardNumber;
+    private int PIN;
 }

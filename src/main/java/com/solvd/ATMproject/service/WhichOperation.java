@@ -8,16 +8,16 @@ public class WhichOperation {
         int finalBalance = 0;
         switch (operationId) {
             case (1):
-                finalBalance = balance - sum;
+                finalBalance = balance - sum/20;
                 break;
             case (2):
-                finalBalance = balance - sum;
+                finalBalance = balance - sum/20;
                 break;
             case (3):
-                finalBalance = balance - sum;
+                finalBalance = balance - sum/20;
                 break;
             case (4):
-                finalBalance = balance - sum;
+                finalBalance = balance - sum/20;
                 break;
             case (5):
                 finalBalance = balance;

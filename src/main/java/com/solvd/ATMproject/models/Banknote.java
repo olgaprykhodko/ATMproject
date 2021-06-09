@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Banknote {
-    int idBanknote;
-    int denomination;
-    int numberOfBanknote;
+    private int idBanknote;
+    private int denomination;
+    private int numberOfBanknote;
 }

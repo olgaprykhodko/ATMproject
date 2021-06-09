@@ -44,7 +44,7 @@ public class OperationDAO extends AbstractJDBCDao implements IOperation {
             connection = getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_OPERATION);
             resultSet = preparedStatement.executeQuery();
-            log.info("List of operations: ");
+
             while (resultSet.next()) {
                 operation = new Operation();
                 operation.setIdOperation(resultSet.getInt(1));

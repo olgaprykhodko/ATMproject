@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Bank {
-    int idBank;
-    String name;
-    int registerNumber;
-    int idATM;
+    private int idBank;
+    private String name;
+    private int registerNumber;
+    private int idATM;
 }

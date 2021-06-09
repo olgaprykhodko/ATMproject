@@ -8,10 +8,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class AddressService {
 
-    public static Address getAddress(String street)  {
+    public static void getAddress(String street) {
         IAddressDAO addressDAO = new AddressDAO();
-        log.info("You have chosen the ATM on " + street + " street");
-        return addressDAO.read(street);
-
+        Address address = addressDAO.read(street);
+        log.info("The ATM on " + street + " has id ATM = " + address.getIdATM());
     }
 }

@@ -4,10 +4,10 @@ import lombok.Data;
 
 @Data
 public class Address {
-    int idAddress;
-    String country;
-    String city;
-    String street;
-    int idATM;
-    int idBank;
+    private int idAddress;
+    private String country;
+    private String city;
+    private String street;
+    private int idATM;
+    private int idBank;
 }

@@ -37,7 +37,7 @@ public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
     }
 
     @Override
-    public CashCollection read(Date date) {
+    public CashCollection read(Date schedule) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -47,10 +47,9 @@ public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
             preparedStatement = connection.prepareStatement(GET_TIME);
             preparedStatement.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
             resultSet = preparedStatement.executeQuery();
-            log.debug("Request was successful.");
             if (resultSet.next()) {
                 collection = new CashCollection();
-                collection.setSchedule(resultSet.getDate(2));
+                collection.setSchedule(resultSet.getDate("schedule"));
             }
         } catch (SQLException ex) {
             log.error("Error:" + ex);
