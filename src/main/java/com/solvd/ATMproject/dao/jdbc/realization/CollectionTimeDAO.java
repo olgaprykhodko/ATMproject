@@ -4,7 +4,6 @@ import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
 import com.solvd.ATMproject.dao.interfaces.IDateDAO;
 import com.solvd.ATMproject.models.CashCollection;
 import lombok.extern.log4j.Log4j2;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +13,7 @@ import java.util.Date;
 
 @Log4j2
 public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
-    private String GET_TIME = "SELECT Schedule FROM Cash_Collection WHERE Schedule = ?";
+    private String GET_TIME = "SELECT Schedule FROM CashCollection WHERE Schedule = ?";
 
 
     @Override
@@ -38,7 +37,7 @@ public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
     }
 
     @Override
-    public CashCollection read(Date date) {
+    public CashCollection read(Date schedule) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -48,10 +47,9 @@ public class CollectionTimeDAO extends AbstractJDBCDao implements IDateDAO {
             preparedStatement = connection.prepareStatement(GET_TIME);
             preparedStatement.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
             resultSet = preparedStatement.executeQuery();
-            log.debug("Request was successful.");
             if (resultSet.next()) {
                 collection = new CashCollection();
-                collection.setSchedule(resultSet.getDate(2));
+                collection.setSchedule(resultSet.getDate("schedule"));
             }
         } catch (SQLException ex) {
             log.error("Error:" + ex);

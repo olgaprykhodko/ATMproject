@@ -12,23 +12,21 @@ import java.sql.SQLException;
 
 @Log4j2
 public class CardDAO extends AbstractJDBCDao implements ICardDAO {
-    private String GET_BY_ID_CARD = "SELECT status FROM cards WHERE UsersIdUsers = ?";
+    private String GET_STATUS_BY_CARD_NUMBER = "SELECT status FROM cards WHERE cardNumber = ?";
 
     @Override
     public Card read(String cardNumber) {
-        Connection connection = null;
+        Connection connection = getConnectionPool().takeConnection();;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         Card card = null;
         try {
-            connection = getConnectionPool().takeConnection();
-            preparedStatement = connection.prepareStatement(GET_BY_ID_CARD);
+            preparedStatement = connection.prepareStatement(GET_STATUS_BY_CARD_NUMBER);
             preparedStatement.setString(1, cardNumber);
             resultSet = preparedStatement.executeQuery();
-            log.debug("Request was successful.");
             if (resultSet.next()) {
                 card = new Card();
-                card.setStatus(resultSet.getString("cardNumber"));
+                card.setStatus(resultSet.getString("status"));
             }
         } catch (SQLException ex) {
             log.error("Error:" + ex);
@@ -58,6 +56,7 @@ public class CardDAO extends AbstractJDBCDao implements ICardDAO {
     public void update(Card entity) {
         throw new UnsupportedOperationException();
     }
+
 
     @Override
     public void delete(Card entity) {

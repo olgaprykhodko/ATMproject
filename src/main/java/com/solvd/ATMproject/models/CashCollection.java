@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 public class CashCollection {
-    int idCashCollection;
-    Date schedule;
-    String responsible;
+    private int idCashCollection;
+    private Date schedule;
+
 }

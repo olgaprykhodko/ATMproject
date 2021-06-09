@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Operation {
-    int idOperation;
-    String operationName;
-    int operationCode;
+    private int idOperation;
+    private String operationName;
+    private int operationCode;
 }

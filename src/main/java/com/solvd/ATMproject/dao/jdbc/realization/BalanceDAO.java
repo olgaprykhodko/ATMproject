@@ -12,20 +12,19 @@ import java.sql.SQLException;
 
 @Log4j2
 public class BalanceDAO extends AbstractJDBCDao implements IBalanceDAO {
-    private String GET_BY_ID_CARD = "SELECT balance FROM cards WHERE cardNumber = ?";
+    private String GET_BALANCE_BY_CARD_NUMBER = "SELECT balance FROM cards WHERE cardNumber = ?";
 
     @Override
-    public void read(int balance) {
+    public Card read(String cardNumber) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         Card card = null;
         try {
-            connection = getConnectionPool().takeConnection();
-            preparedStatement = connection.prepareStatement(GET_BY_ID_CARD);
-            preparedStatement.setInt(1, balance);
+            connection =getConnectionPool().takeConnection();
+            preparedStatement = connection.prepareStatement(GET_BALANCE_BY_CARD_NUMBER);
+            preparedStatement.setString(1, cardNumber);
             resultSet = preparedStatement.executeQuery();
-            log.debug("Request was successful.");
             if (resultSet.next()) {
                 card = new Card();
                 card.setBalance(resultSet.getInt("balance"));
@@ -41,6 +40,7 @@ public class BalanceDAO extends AbstractJDBCDao implements IBalanceDAO {
             }
             getConnectionPool().returnConnection(connection);
         }
+        return card;
     }
 
     @Override
@@ -58,13 +58,10 @@ public class BalanceDAO extends AbstractJDBCDao implements IBalanceDAO {
         throw new UnsupportedOperationException();
     }
 
+
     @Override
     public void delete(Card entity) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    public Card read(Integer number) {
-        return null;
-    }
 }
