@@ -4,10 +4,10 @@ import lombok.Data;
 
 @Data
 public class Card {
-    int idCard;
-    int balance;
-    String status;
-    int idUser;
-    String cardNumber;
-    int PIN;
+    private int idCard;
+    private int balance;
+    private String status;
+    private int idUser;
+    private String cardNumber;
+    private int PIN;
 }
