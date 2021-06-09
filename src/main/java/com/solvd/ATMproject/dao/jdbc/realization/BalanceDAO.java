@@ -16,11 +16,12 @@ public class BalanceDAO extends AbstractJDBCDao implements IBalanceDAO {
 
     @Override
     public Card read(String cardNumber) {
-        Connection connection = getConnectionPool().takeConnection();;
+        Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         Card card = null;
         try {
+            connection =getConnectionPool().takeConnection();
             preparedStatement = connection.prepareStatement(GET_BALANCE_BY_CARD_NUMBER);
             preparedStatement.setString(1, cardNumber);
             resultSet = preparedStatement.executeQuery();
