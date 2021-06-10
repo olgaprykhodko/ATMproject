@@ -1,4 +1,3 @@
-
 package com.solvd.ATMproject.dao.jdbc.realization;
 
 import com.solvd.ATMproject.dao.abstractClasses.AbstractJDBCDao;
