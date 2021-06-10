@@ -11,6 +11,6 @@ public class CardService {
     public static void getStatusCardByNumberCard(String cardNumber) {
         ICardDAO cardDAO = new CardDAO();
         Card card = cardDAO.read(cardNumber);
-        log.info("Your card is " + cardNumber + " has " + card.getStatus()+ "status");
+        log.info("Your card " + cardNumber + " has " + card.getStatus()+ " status");
     }
 }

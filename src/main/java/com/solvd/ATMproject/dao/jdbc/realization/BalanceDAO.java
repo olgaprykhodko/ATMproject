@@ -15,7 +15,7 @@ public class BalanceDAO extends AbstractJDBCDao implements IBalanceDAO {
     private String GET_BALANCE_BY_CARD_NUMBER = "SELECT balance FROM cards WHERE cardNumber = ?";
 
     @Override
-    public Card read(String cardNumber) {
+    public Card read(String cardNumber ) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
