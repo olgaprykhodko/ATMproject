@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Log4j2
 public class CollectionService {
-    public static void getCashCollectionTime() throws ParseException {
+    public static void getCashCollectionTime() {
         CollectionTimeDAO cTime = new CollectionTimeDAO();
         Date date = new Date();
         cTime.read(date);
