@@ -4,7 +4,6 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class WhichOperation {
-    public int commission;
 
 
     public double whichOperation(int operationId, int balance, int sum) {
@@ -12,23 +11,23 @@ public class WhichOperation {
 
         switch (operationId) {
             case (1):
-                finalBalance = balance -sum - sum*0.05;
+                finalBalance = balance -(sum + sum*0.05);
                 break;
             case (2):
-                finalBalance = balance - sum -sum*0.5;
+                finalBalance = balance -(sum + sum*0.05);
                 break;
             case (3):
-                finalBalance = balance - sum - sum*0.5;
+                finalBalance = balance - (sum + sum*0.05);
                 break;
             case (4):
-                finalBalance = balance - sum - sum*0.5;
+                finalBalance = balance - (sum + sum*0.05);
                 break;
             case (5):
                 finalBalance = balance;
                 log.error("This operation is currently not supported");
                 break;
             case (6):
-                finalBalance = balance + sum - sum*0.5;
+                finalBalance = balance + sum;
                 break;
             default:
                 log.error("This operation is not supported");
