@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 @Log4j2
 public class Main {
-    public static void main(String[] args) throws ParseException {
-
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         log.info("Welcome to BSB bank");
         AddressService.getAddress("Mira 45");
@@ -19,10 +18,9 @@ public class Main {
         CardService.getStatusCardByNumberCard("1234123412341234");
         int op = OperationService.getOperation();
         AddressService.getCommissionBy("Mira 45");
-        BalanceService.getCardBalance("1234123412341234");
+        double balance = BalanceService.getCardBalance("1234123412341234");
         log.info("Please enter the sum");
-        int balance = 800;
-        int sum = Integer.parseInt(scanner.nextLine());
+        double sum = Double.parseDouble(scanner.nextLine());
         WhichOperation wh = new WhichOperation();
         wh.whichOperation(op, balance, sum);
         log.info("Thank you for using this ATM");

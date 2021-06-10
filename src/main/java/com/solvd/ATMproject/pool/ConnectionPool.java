@@ -41,7 +41,7 @@ public class ConnectionPool {
         Connection connection = null;
         if (connectionsAmount == 0 || (connectionsAmount < 5 && freeConnections.size() == 0)) {
             try {
-                connection = DriverManager.getConnection("JDBC:mysql://127.0.0.1:3306/ATMproject?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user=root&password=pe1re2celenec");
+                connection = DriverManager.getConnection("JDBC:mysql://127.0.0.1:3306/ATMproject?user=root&password=password");
                 usedConnections.add(connection);
             } catch (SQLException ex) {
                 LOGGER.error("SQL error", ex);

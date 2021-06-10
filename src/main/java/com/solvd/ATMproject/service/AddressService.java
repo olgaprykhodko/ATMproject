@@ -18,6 +18,6 @@ public class AddressService {
     public static void getCommissionBy(String street) {
         IAddressDAO addressDAO = new AddressDAO();
         ATM atm = addressDAO.getBy(street);
-        log.info("You have commission - " + atm.getCommission() + " % ");
+        log.info("Your commission is - " + atm.getCommission() + "% ");
     }
 }
